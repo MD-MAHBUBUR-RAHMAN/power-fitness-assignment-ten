@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebase.init";
 import SocialLogIn from "../Social/SocialLogIn";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [sendPasswordResetEmail, sending, error1] =
+    useSendPasswordResetEmail(auth);
 
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
@@ -23,6 +31,15 @@ const Login = () => {
   if (user) {
     navigate(form, { replace: true });
   }
+
+  const resetPassword = async () => {
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+    } else {
+      toast("enter your email address");
+    }
+  };
 
   return (
     <div className="container w-50 mx-auto">
@@ -56,7 +73,12 @@ const Login = () => {
             required
           />
         </Form.Group>
-        <p>Fotget Password?</p>
+        <p>
+          Forget Password?
+          <button className="text-primary btn btn-link" onClick={resetPassword}>
+            Reset Password
+          </button>
+        </p>
         <Button
           variant="primary"
           className="btn btn-primary my-3 d-block w-50 mx-auto"
@@ -66,12 +88,13 @@ const Login = () => {
         </Button>
       </Form>
       <p>
-        Don't have Account?
+        Don't have an Account?
         <Link to="/register" className="text-primary">
           Register Please.
         </Link>
       </p>
       <SocialLogIn />
+      <ToastContainer />
     </div>
   );
 };

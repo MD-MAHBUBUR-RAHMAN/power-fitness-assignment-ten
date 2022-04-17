@@ -4,6 +4,7 @@ import auth from "../../firebase.init";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogIn from "../Social/SocialLogIn";
+import Loading from "../Loading/Loading";
 
 const Register = () => {
   const [agree, setAgree] = useState(false);
@@ -17,11 +18,17 @@ const Register = () => {
     const email = event.target.email.value;
     const password = event.target.password.value;
     const confirmPassword = event.target.confirmPassword.value;
+    if (password !== confirmPassword) {
+      return;
+    }
     createUserWithEmailAndPassword(email, password);
     console.log(name, email, password, confirmPassword);
-
     navigate("/home");
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="container w-50 mx-auto">
@@ -80,9 +87,10 @@ const Register = () => {
           className="mb-3"
           controlId="formBasicCheckbox"
         >
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check type="checkbox" label="Accept terms and condition" />
         </Form.Group>
         <Button
+          disabled={agree}
           variant="primary"
           className="btn my-3 d-block w-50 mx-auto"
           type="submit"

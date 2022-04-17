@@ -3,12 +3,31 @@ import {
   useSignInWithGithub,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import Loading from "../Loading/Loading";
 
 const SocialLogIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithGithub, , gitUser, gitLoading, gitError] =
+  const [signInWithGithub, gitUser, gitLoading, gitError] =
     useSignInWithGithub(auth);
+  const navigate = useNavigate();
+
+  let errorElement;
+  if (user || gitUser) {
+    navigate("/home");
+  }
+  if (loading || gitLoading) {
+    return <Loading />;
+  }
+  if (error || gitError) {
+    errorElement = (
+      <p className="text-danger">
+        Error: {error?.message}
+        {gitError?.message}
+      </p>
+    );
+  }
   return (
     <div>
       <div className="d-flex">
@@ -26,7 +45,8 @@ const SocialLogIn = () => {
         "
         ></div>
       </div>
-      <div className="">
+      {errorElement}
+      <div>
         <button
           className="btn btn-secondary my-3 d-block w-50 mx-auto"
           onClick={() => signInWithGoogle()}

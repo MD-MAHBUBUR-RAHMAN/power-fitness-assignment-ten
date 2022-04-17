@@ -13,7 +13,7 @@ import Requireauth from "./component/Required/Requireauth";
 
 function App() {
   return (
-    <div>
+    <div className="min">
       <Header />
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>

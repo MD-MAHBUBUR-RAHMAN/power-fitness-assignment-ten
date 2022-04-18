@@ -1,0 +1,7 @@
+.name, .mail ,.phone ,.text ,.submit {
+    width: 70%;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;    
+}
+

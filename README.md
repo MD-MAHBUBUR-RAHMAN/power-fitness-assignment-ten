@@ -19,6 +19,7 @@ This is the page for gym instructor who provides many fitness servicess.
 - Use firebase
 - Use racct router
 - use React libraries
+- use react firebase hook
 
 # To use hero icons
 

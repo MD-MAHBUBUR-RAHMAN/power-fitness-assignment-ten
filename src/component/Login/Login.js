@@ -24,6 +24,15 @@ const Login = () => {
     event.preventDefault();
     signInWithEmailAndPassword(email, password);
   };
+  let errorElement;
+  if (error) {
+    errorElement = (
+      <p className="text-danger">
+        Error: {error?.message}
+        {error1?.message}
+      </p>
+    );
+  }
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -87,6 +96,7 @@ const Login = () => {
           Submit
         </Button>
       </Form>
+      {errorElement}
       <p>
         Don't have an Account?
         <Link to="/register" className="text-primary">

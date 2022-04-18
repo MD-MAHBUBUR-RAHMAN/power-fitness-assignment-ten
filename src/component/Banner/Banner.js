@@ -16,25 +16,29 @@ const Banner = () => {
       <Carousel.Item>
         <img className="d-block h-50 w-100" src={banner1} alt="First slide" />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>ACHIEVE YOUR GOALS WITH A PERSONAL TRAINER</h3>
+          <p>
+            guide you on how to perform exercises correctly and safely, making
+            sure you target the right muscles while preventing injuries.
+          </p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block h-50 w-100" src={banner2} alt="Second slide" />
 
         <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h3>Get in Shape</h3>
+          <p>To work to have good, robust health; to become strong or fit.</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
         <img className="d-block h-50 w-100" src={banner3} alt="Third slide" />
 
         <Carousel.Caption>
-          <h3>Third slide label</h3>
+          <h3>Achieve your goals as a team</h3>
           <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+            Whatever your goal, working with a PT will challenge you and help
+            you get there quicker than on your own.
           </p>
         </Carousel.Caption>
       </Carousel.Item>

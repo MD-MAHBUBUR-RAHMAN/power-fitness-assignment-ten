@@ -6,9 +6,9 @@ const Blog = () => {
       <h3 className="text-primary text-center mt-5">
         Here is all question and answer
       </h3>
-      <div class="container">
-        <div class="row g-4 mt-4">
-          <div class="col-12 col-md-6 ">
+      <div className="container">
+        <div className="row g-4 mt-4">
+          <div className="col-12 col-md-6 ">
             <h6>Difference between Authentication vs Authorization? </h6>
             <p>
               <span className="text-primary">Authentication: </span>
@@ -30,7 +30,7 @@ const Blog = () => {
               an application are good examples of authorization
             </p>
           </div>
-          <div class="col-12 col-md-6">
+          <div className="col-12 col-md-6">
             <h6>Why are you using firebase?</h6>
             <p>
               Firebase is a Google-backed application development software that
@@ -48,7 +48,7 @@ const Blog = () => {
               scans, voice recognition, and fingerprints match.
             </p>
           </div>
-          <div class="col-12 col-md-6">
+          <div className="col-12 col-md-6">
             <h6>
               What other services does firebase provide other than
               authentication?
